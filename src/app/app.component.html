@@ -1,0 +1,73 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<header class="container">
+  <div class="row">
+    <div class="header-logotype col-1"></div>
+    <div class="header-title col-10">Controle financeiro</div>
+    <div class="header-menu col-1"></div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="transition-type col-12">
+      <div class="transition-type-label">Tipo de transação</div>
+      <select #transitionType class="transition-type-select">
+        <option value="compra">Compra</option>
+        <option value="venda">Venda</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="merchandise-name col-12">
+      <div class="merchandise-name-label">Nome da Mercadoria</div>
+      <input #merchandiseName class="merchandise-name-input" type="text">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="value col-12">
+      <div class="value-label">Valor</div>
+      <input #value class="value-input" type="text">
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="transaction-button col-12">
+      <button (click)="onClick(transitionType.value, merchandiseName.value, value.value)">Adicionar transação</button>
+    </div>
+  </div>
+  <hr>
+
+  <div class="container">
+    <div class="row">
+      <p class="col-12 text-center">Extrato de transações</p>
+    </div>
+    <div class="row">
+      <table class= "col-12">
+        <tbody>
+          <tr>
+            <td></td>
+            <td>Mercadoria</td>
+            <td>Valor</td>
+          </tr>
+          <tr *ngFor="let transitionValue of transitionValuesShow">
+            <td>{{transitionValue.type}}</td>
+            <td>{{transitionValue.name}}</td>
+            <td>{{transitionValue.value}}</td>
+          </tr>
+
+          <tr *ngIf="transitionValuesTotalShow">
+              <td></td>
+              <td>Total</td>
+              <td>{{transitionValuesTotalShow}}</td>
+            </tr>
+          
+        </tbody>        
+      </table>
+    </div>
+  </div>
+</div>
+
+
